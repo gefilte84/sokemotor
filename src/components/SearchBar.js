@@ -10,7 +10,8 @@ class SearchBar extends React.Component {
 
         this.props.onSubmit(this.state.term)
     };
-
+    // props systemet fra child til parent, bruk callback systemet
+    // når du har en callback funskjon så bruk arrow funksjon
     render () {
         return (
         <div className="ui segment">
