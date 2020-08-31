@@ -1,21 +1,22 @@
 import React from 'react';
-import axios from 'axios';
+import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 
 
 class App extends React.Component {
-    // med async foran navnet da kan vi bruke syntaxen til async
-    async onSearchSubmit(term) {
-        const response = await axios
+    // initierer state
+    state = { images: [] };
+    // med async foran navnet, kan vi bruke syntaxen til async
+    onSearchSubmit = async (term) => {
+        const response = await unsplash
         // bruke axios til å hente bilder
         .get('https://api.unsplash.com/search/photos', {
         params: { query: term },   
-        headers: {
-                Authorization: 'Client-ID L-mxEgieoh3TzlnYwaS_8SAsGCC1FbzrKRPaTjllF9M'
-            }
+        
         });// metode for å få dataen 
-      
-        console.log(response.data.results);
+
+      // oppdaterer state med bilder fra resultatene til unsplash
+        this.setState ({ images: response.data.results });
     }
 
 
@@ -25,6 +26,7 @@ class App extends React.Component {
         return ( 
         <div className="ui container" style={{ marginTop: '10px' }}>
             <SearchBar onSubmit={this.onSearchSubmit}/>
+            Found: {this.state.images.length} images
         </div>
     );
     }
