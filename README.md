@@ -1,3 +1,5 @@
+Denne appen fungerer som en bildesøkemotor. Den henter bilder fra unsplash API som er et gratis bildebibliotek. Laget i React av Najim Zaouaghi
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
